@@ -34,6 +34,7 @@ using std::cin;
 using std::endl;
 
 #include <vector>
+#include <chrono>
 
 #include "hpcg.hpp"
 
@@ -325,6 +326,7 @@ int main(int argc, char * argv[]) {
 #endif
 
   /* This is the timed run for a specified amount of time. */
+  auto start = std::chrono::system_clock::now();
 
   optMaxIters = optNiters;
   double optTolerance = 0.0;  // Force optMaxIters iterations

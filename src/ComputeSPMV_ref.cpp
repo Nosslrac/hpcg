@@ -56,7 +56,9 @@ int ComputeSPMV_ref( const SparseMatrix & A, Vector & x, Vector & y) {
   double * const yv = y.values;
   const local_int_t nrow = A.localNumberOfRows;
 #ifndef HPCG_NO_OPENMP
-  #pragma omp parallel for
+#pragma omp parallel
+#pragma omp single
+#pragma omp taskloop
 #endif
   for (local_int_t i=0; i< nrow; i++)  {
     double sum = 0.0;
